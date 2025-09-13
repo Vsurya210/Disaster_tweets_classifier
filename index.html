@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disaster Tweets Classifier</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #74ebd5, #ACB6E5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffffdd;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            resize: none;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        .result {
+            margin-top: 25px;
+            font-size: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+        }
+
+        .disaster {
+            background-color: #ff4b2b;
+        }
+
+        .safe {
+            background-color: #28a745;
+        }
+
+        /* Spinner */
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff4b2b;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disaster Tweets Classifier</h1>
+        <form method="POST" onsubmit="showSpinner()">
+            <textarea name="tweet" placeholder="Enter a tweet here..." required></textarea><br>
+            <button type="submit">Classify Tweet</button>
+        </form>
+
+        <div class="spinner" id="spinner"></div>
+        
+        {% if prediction %}
+            <div class="result {% if 'Disaster' in prediction %}disaster{% else %}safe{% endif %}">
+                <p><b>Prediction:</b> {{ prediction }}</p>
+                <p><b>Confidence:</b> {{ confidence }}%</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function showSpinner() {
+            document.getElementById('spinner').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
