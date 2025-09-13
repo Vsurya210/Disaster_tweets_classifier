@@ -1,0 +1,9 @@
+pandas
+numpy
+flask
+scikit-learn
+matplotlib
+seaborn
+wordcloud
+re(regex)
+string
