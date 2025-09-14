@@ -26,4 +26,4 @@ Model Training → Logistic Regression.
 
 Evaluation → Accuracy (~81%), Confusion Matrix, ROC Curve (AUC ~0.85).
 
-Deployed with a simple Flask web app.  
+Deployed with a simple Flask web app with Interface. 
