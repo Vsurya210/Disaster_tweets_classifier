@@ -1,9 +1,6 @@
-pandas
-numpy
-flask
+Flask
+gunicorn
 scikit-learn
-matplotlib
-seaborn
-wordcloud
-string
 joblib
+nltk
+numpy
