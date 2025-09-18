@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f9;
+            text-align: center;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        .result-box {
+            background: #fff;
+            display: inline-block;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .tweet {
+            font-style: italic;
+            color: #555;
+        }
+        .prediction {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+        .disaster {
+            color: red;
+        }
+        .not-disaster {
+            color: green;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+    <h1>Prediction Result</h1>
+    <div class="result-box">
+        <p class="tweet">Tweet: "{{ tweet }}"</p>
+
+        <p class="prediction">
+            {% if prediction == 1 %}
+                <span class="disaster">🚨 This tweet is disaster-related.</span>
+            {% else %}
+                <span class="not-disaster">✅ This tweet is NOT disaster-related.</span>
+            {% endif %}
+        </p>
+    </div>
+
+    <br>
+    <a href="/">🔙 Classify Another Tweet</a>
+</body>
+</html>
